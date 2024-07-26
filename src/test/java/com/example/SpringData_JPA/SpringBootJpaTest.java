@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.test.annotation.Commit;
 
 // @DataJpaTest is one of the annotations in Spring Boot that is used for tests related to JPA (Java Persistence API).
@@ -28,6 +29,7 @@ import org.springframework.test.annotation.Commit;
 
 @DataJpaTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ComponentScan(basePackages = {"com.example.SpringData_JPA.bootstrap"}) // The data we added in the DataInitializer is now executed
 public class SpringBootJpaTest {
 
     @Autowired
@@ -39,7 +41,7 @@ public class SpringBootJpaTest {
     //@Rollback(value = false) == @Commit
     void testJpaTestSplice() {
         long countBefore= bookRepository.count();
-        Assertions.assertThat(countBefore).isEqualTo(0);
+        Assertions.assertThat(countBefore).isEqualTo(2);
 
         bookRepository.save(new Book("My Book","130","RandomHouse"));
 
@@ -52,7 +54,7 @@ public class SpringBootJpaTest {
     @Order(2)
     void testJpaTestSpliceTransaction() {
         long countBefore= bookRepository.count();
-        Assertions.assertThat(countBefore).isEqualTo(1);
+        Assertions.assertThat(countBefore).isEqualTo(3);
     }
 
 }
