@@ -14,6 +14,7 @@ class SpringDataJpaApplicationTests {
 
 	@Test
 	void testBookRepository() {
+		// Using the count method of bookRepository, it gets the total number of records in the books table.
 		long count = bookRepository.count();
 		Assertions.assertThat(count).isGreaterThan(0);
 	}
