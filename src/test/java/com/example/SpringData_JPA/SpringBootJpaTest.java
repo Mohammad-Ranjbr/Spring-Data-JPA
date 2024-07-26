@@ -35,6 +35,9 @@ public class SpringBootJpaTest {
     @Autowired
     BookRepository bookRepository;
 
+    // @Rollback and @Commit annotations are used in Spring to control the behavior of transactions in tests.
+    // These two annotations allow you to specify whether changes made to the database during the execution of the tests are permanently saved or rolled back.
+
     @Test
     @Commit
     @Order(1)
@@ -50,6 +53,13 @@ public class SpringBootJpaTest {
         Assertions.assertThat(countBefore).isLessThan(countAfter);
     }
 
+    // We want to check the transactions
+    // In the first method, we create a record in the database. In the next method, when we get the number of records,
+    // we expect there to be a record in it, but this is not the case and there is no record in the database.
+    // This is because each method is performed in a transaction. and after finishing the work,
+    // it will be rolled back and all the changes will return to the initial state.
+    // In order to perform our test, we first determine the order of the tests so that the second method
+    // must be executed after the second method, but this alone is not enough.
     @Test
     @Order(2)
     void testJpaTestSpliceTransaction() {
