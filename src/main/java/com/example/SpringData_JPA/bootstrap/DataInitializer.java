@@ -24,12 +24,12 @@ public class DataInitializer implements CommandLineRunner {
     public void run(String... args) {
         bookRepository.deleteAll();
 
-        Book bookDDD = new Book("Domain Driven Design","123","RandomHouse");
+        Book bookDDD = new Book("Domain Driven Design","123","RandomHouse",null);
         System.out.println("ID: " + bookDDD.getId());
         bookRepository.save(bookDDD);
         System.out.println("ID: " + bookDDD.getId());
 
-        Book bookSIA = new Book("Spring In Action","124","RandomHouse");
+        Book bookSIA = new Book("Spring In Action","124","RandomHouse",null);
         bookRepository.save(bookSIA);
 
         bookRepository.findAll().forEach(book -> {
