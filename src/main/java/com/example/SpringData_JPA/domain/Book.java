@@ -20,6 +20,7 @@ public class Book {
     private String title;
     private String isbn;
     private String publisher;
+    private Long authorId;
 
     // Hibernate requires a constructor without arguments to instantiate a class.
     // When we write a class, if we don't put a constructor for it, Java itself does this by default,
@@ -27,10 +28,11 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title, String isbn, String publisher) {
+    public Book(String title, String isbn, String publisher,Long author_id) {
         this.title = title;
         this.isbn = isbn;
         this.publisher = publisher;
+        this.authorId = author_id;
     }
 
     // The equals and hashCode functions in Java are important for comparing objects and using them in specific data structures such as HashSet and HashMap.
