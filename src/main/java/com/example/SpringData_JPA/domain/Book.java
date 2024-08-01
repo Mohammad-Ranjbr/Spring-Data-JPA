@@ -14,8 +14,21 @@ import java.util.Objects;
 @Entity
 public class Book {
 
+    // GenerationType.AUTO - Let Hibernate Pick - best practice is to specify -> This strategy automatically selects
+    // the best strategy for ID generation based on the database type. For example, in databases such as MySQL, IDENTITY may be used,
+    // and in databases such as Oracle, SEQUENCE may be used. This strategy is usually used when JPA wants to choose the best strategy.
+    // GenerationType.SEQUENCE - Use database sequence (Not a feature of MySQL , feature of Oracle) -> This strategy uses sequences to generate identifiers.
+    // Sequences in databases are mechanisms used to automatically generate unique values for identifiers (IDs) or other sequential values.
+    // GenerationType.IDENTITY - Use auto-incremented database columns -> This strategy uses auto-increment columns in the database to generate identifiers.
+    // Suitable for databases such as MySQL and PostgreSQL that support auto-increment.
+    // GenerationType.TABLE - Use database table to simulate sequence -> This strategy uses a table in the database to generate identifiers.
+    // This table holds the values of the identifiers and is updated to generate new identifiers.
+    // Perfect for when you don't want to depend on auto-increment sequences or columns.
+
+    // GenerationType.IDENTITY and GenerationType.SEQUENCE are generally better performing than GenerationType.TABLE.
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String isbn;
