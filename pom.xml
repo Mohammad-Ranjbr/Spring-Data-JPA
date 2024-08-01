@@ -97,10 +97,17 @@
 					<url>jdbc:mysql://127.0.0.1:3306/bookdb?useUnicode=tru&amp;characterEncoding=UTF-8</url>
 					<username>bookadmin</username>
 					<password>password</password>
+					<!--The name of the output file to record the changes.-->
 					<outputChangeLogFile>changelog.xml</outputChangeLogFile>
+					<!--The author of the changes-->
 					<changeSetAuthor>MR</changeSetAuthor>
+					<!--Database schema name.-->
 					<changelogSchemaName>bookdb</changelogSchemaName>
 				</configuration>
+				<!--This section defines the plugin dependencies. Here, Liquibase plugin needs mysql-connector-java to connect
+				 to MySQL database. Note that in plugins, the version of the dependencies must be specified explicitly, and the
+				 version specified in the parent or version management cannot be used. For this reason, the mysql-connector-java
+				 version is specified directly.-->
 				<dependencies>
 					<dependency>
 						<groupId>mysql</groupId>
