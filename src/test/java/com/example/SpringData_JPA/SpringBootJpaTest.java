@@ -18,7 +18,7 @@ import org.springframework.test.annotation.Commit;
 // Data layer only configuration: Loads only JPA-related beans and repositories into the Spring Context.
 // In other words, only those parts of the application that are related to data access (data access) are loaded and configured.
 // Set an in-memory database (in-memory database): By default, it uses an in-memory database such as H2,
-// HSQL, or Derby. This makes tests run faster and doesn't require a database.
+// H2 Database This makes tests run faster and doesn't require a database.
 // Automatic text setting for repositories: All JPA repositories and settings are automatically set and used.
 // This means that there is no need to manually adjust these components.
 // Disabling unnecessary services: Services that are required for repositories testing
