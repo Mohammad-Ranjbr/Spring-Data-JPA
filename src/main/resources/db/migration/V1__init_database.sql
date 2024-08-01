@@ -1,5 +1,5 @@
 drop table if exists book;
-drop table if exists book_sequence;
+drop table if exists hibernate_sequence;
 
 create table book (
         id bigint not null auto_increment,
@@ -10,8 +10,8 @@ create table book (
 ) engine=InnoDB;
 
 -- in Hibernate 6 use book_seq (<table_name>_seq) NOT hibernate_sequence
-create table book_sequence (
+create table hibernate_sequence (
     next_val bigint
 )engine=InnoDB;
 
-insert into book_sequence values (1);
+insert into hibernate_sequence values (1);
