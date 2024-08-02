@@ -20,8 +20,8 @@ public class DataInitializer implements CommandLineRunner {
 
     @Autowired
     public DataInitializer(BookRepository bookRepository, AuthorUuidRepository authorUuidRepository){
-        this.bookRepository = bookRepository;
-        this.authorUuidRepository = authorUuidRepository;
+            this.bookRepository = bookRepository;
+            this.authorUuidRepository = authorUuidRepository;
     }
 
     @Override
