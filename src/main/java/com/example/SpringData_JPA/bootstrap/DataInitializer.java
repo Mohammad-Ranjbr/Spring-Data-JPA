@@ -1,6 +1,8 @@
 package com.example.SpringData_JPA.bootstrap;
 
+import com.example.SpringData_JPA.domain.AuthorUuid;
 import com.example.SpringData_JPA.domain.Book;
+import com.example.SpringData_JPA.repositories.AuthorUuidRepository;
 import com.example.SpringData_JPA.repositories.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,10 +16,12 @@ import org.springframework.stereotype.Component;
 public class DataInitializer implements CommandLineRunner {
 
     private final BookRepository bookRepository;
+    private final AuthorUuidRepository authorUuidRepository;
 
     @Autowired
-    public DataInitializer(BookRepository bookRepository){
+    public DataInitializer(BookRepository bookRepository, AuthorUuidRepository authorUuidRepository){
         this.bookRepository = bookRepository;
+        this.authorUuidRepository = authorUuidRepository;
     }
 
     @Override
@@ -37,6 +41,13 @@ public class DataInitializer implements CommandLineRunner {
             System.out.println("Book Title: " + book.getTitle());
             System.out.println("Book Publisher: " + book.getPublisher());
         });
+
+        AuthorUuid authorUuid = new AuthorUuid();
+        authorUuid.setFirstName("Mohammad");
+        authorUuid.setLastName("Ranjbar");
+        AuthorUuid savedAuthor = authorUuidRepository.save(authorUuid);
+        System.out.println("Saved Author UUID: " + savedAuthor.getId());
+
     }
 
 }
